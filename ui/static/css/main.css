@@ -1,0 +1,72 @@
+html {
+	margin: 0px;
+}
+body {
+	margin: auto;
+}
+
+nav {
+	display: flex;
+	justify-content: center;
+	background-color: #333;
+	font-family: 'Press Start 2P', monospace;
+}
+
+ul.nav {
+	margin: 0px;
+	padding-left: 0px;
+	list-style: none;
+}
+
+.nav li {
+	display: inline;
+}
+
+ul.nav a {
+	display: inline-block;
+	padding: 10px;
+	text-decoration: none;
+	color: #f4f4f4;
+	text-align: center;
+}
+
+ul.nav a:hover {
+	background-color: #686868;
+	color: #f4f4f4;
+}
+
+main {
+	margin-left: 18px;
+}
+
+.footer-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background-color: #1d522b;
+}
+
+footer {
+	margin-top: auto;
+	margin-left: auto;
+	margin-right: auto;
+	color: #f4f4f4;
+}
+
+div.intro-section h2{
+	text-align: center;
+	font-family: 'Press Start 2P', monospace;
+}
+
+.skills-grid {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+}
+
+.skill-card {
+	padding: 18px;
+	margin: 2px;
+	border-style: dashed;
+}
