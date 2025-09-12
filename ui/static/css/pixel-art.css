@@ -1,0 +1,14 @@
+
+
+.pixel-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.pixel {
+	width: 30px;
+	height: 30px;
+	background-color: rgb(35, 26, 68);
+	border-style: double;
+}
