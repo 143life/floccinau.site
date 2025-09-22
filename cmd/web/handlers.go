@@ -1,9 +1,12 @@
 package main
 
 import (
-	//"fmt"
+	"database/sql"
+	"errors"
+	"fmt"
 	"html/template"
 	"net/http"
+	"strconv"
 )
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
@@ -30,4 +33,23 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		app.serverError(w, err)
 		return
 	}
+}
+
+func (app *application) draftView(w http.ResponseWriter, r *http.Request) {
+	id, err := strconv.Atoi(r.URL.Query().Get("id"))
+	if err != nil || id < 1 {
+		app.notFound(w)
+		return
+	}
+
+	d, err := app.draft.Get(id)
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			app.notFound(w)
+		} else {
+			app.serverError(w, err)
+		}
+	}
+
+	fmt.Fprintf(w, "%+v", d)
 }
