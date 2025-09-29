@@ -18,6 +18,7 @@ type DraftModel struct {
 	DB *sql.DB
 }
 
+// Add new draft into DB
 func (m *DraftModel) Insert(title string, content string) (int, error) {
 	stmt := `INSERT INTO draft(title, content, created, changed)
 	VALUES(?, ?, NOW(), NOW())`
@@ -34,6 +35,7 @@ func (m *DraftModel) Insert(title string, content string) (int, error) {
 	return int(id), nil
 }
 
+// Return one draft
 func (m *DraftModel) Get(id int) (*Draft, error) {
 	stmt := `SELECT id, title, content, created, changed
 	FROM draft
@@ -55,6 +57,33 @@ func (m *DraftModel) Get(id int) (*Draft, error) {
 	return d, nil
 }
 
+// Return latest 10 drafts added
 func (m *DraftModel) Latest() ([]*Draft, error) {
-	return nil, nil
+	stmt := `SELECT id, title, content, created, changed
+	FROM draft
+	ORDER BY id DESC LIMIT 10`
+
+	rows, err := m.DB.Query(stmt)
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+
+	drafts := []*Draft{}
+
+	for rows.Next() {
+		d := &Draft{}
+		err = rows.Scan(&d.id, &d.title, &d.content, &d.created, &d.changed)
+		if err != nil {
+			return nil, err
+		}
+		drafts = append(drafts, d)
+	}
+
+	if err = rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return drafts, nil
 }
