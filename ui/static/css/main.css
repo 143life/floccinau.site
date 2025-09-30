@@ -2,7 +2,7 @@ html {
 	margin: 0px;
 }
 body {
-	margin: auto;
+	margin: 0px;
 }
 
 nav {
@@ -22,7 +22,7 @@ ul.nav {
 	display: inline;
 }
 
-ul.nav a {
+.nav-links a {
 	display: inline-block;
 	padding: 10px;
 	text-decoration: none;
@@ -30,28 +30,27 @@ ul.nav a {
 	text-align: center;
 }
 
-ul.nav a:hover {
+.nav-links a:hover {
 	background-color: #686868;
 	color: #f4f4f4;
 }
 
 main {
 	margin: 0px;
+	padding: 16px 20px;
 }
 
-.footer-container {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	background-color: #1d522b;
+/* Footer */
+.site-footer {
+  background: #0f3d2e;
+  color: #eaf3ef;
 }
-
-footer {
-	margin-top: auto;
-	margin-left: auto;
-	margin-right: auto;
-	color: #f4f4f4;
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
 }
+.footer-inner p { margin: 0; }
 
 div.intro-section h2{
 	text-align: center;
